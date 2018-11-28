@@ -14,3 +14,34 @@ The current structure of the datasets has a metadata section, which provides the
 
 
 My first hypothesis to create a baseline of sorts, is to test a simple model based on the location and distances of these objects, and see if this provides any sort of preliminary information about the nature of the object. While definitely not the best approach, one such merit to this is that I recognize quasars and active galaxies, objects who can potentially flare up and create transient events, will be typically located further away. Perhaps this indicator will provide a purpose in a first runthrough of the data. 
+
+
+
+Current proposed plan:
+
+Separate into important categories:
+WFD vs DDS(?)
+
+Extra galactic vs galactic 
+
+
+Once in one of these particular categories, do this: 
+
+Consider total spread of events, is there a huge disparity? If so, what is baseline accuracy? 
+
+
+Next, create separate datasets for each:
+
+Arrange the fluxes and identify filter correlations, deal with only one filter maybe at first?
+
+Use the TS of that event and it's assigned label to create a RNN or word2vec type of algorithm. 
+
+
+As for figuring out what this 15th sort of event is, use k means? Use PCA first? 
+
+
+Update/Warning
+---------------
+
+CANNOT ITERATE THROUGH EACH ROW OF THE DATA!! This takes up too much memory and crashed my computer :) 
+As a result, I'm moving this project onto an external drive. 
