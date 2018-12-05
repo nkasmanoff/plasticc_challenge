@@ -28,3 +28,46 @@ The plots generated are the ones used on the training of the model on the traini
 The method by which I determined the probability of the last class (exclusive to testing data) is that it is the probability of that the object being predicted is "not" one of the other ones. The model uses the "predict_proba" action which outputs a probability between 0 and 1, and the probability of it not belonging to the already predicted class will be 1- that #. The 15th class will be the product of all these uncertainties. 
 
 
+Results
+-------
+
+
+First, is a graph of one such model's training loss and accuracy with validation data parallel to it. 
+
+
+
+Results
+-------
+
+
+This plot is the correlation between all of the relevant statistics averaged over n games to the current game, as a function of n. 
+
+<center>
+
+![Project](https://github.com/nkasmanoff/plasticc_challenge/blob/master/modelloss.png)
+
+
+</center>
+
+<center>
+
+![Project](https://github.com/nkasmanoff/plasticc_challenge/blob/master/modelacc.png)
+
+
+</center>
+
+
+
+Additionally, a confusion matrix of the predicted classes. 
+
+
+<center>
+
+![Project](https://github.com/nkasmanoff/plasticc_challenge/blob/master/conmat.png)
+
+
+</center>
+
+
+
+
