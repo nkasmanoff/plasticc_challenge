@@ -1,7 +1,7 @@
 Contained in this repo is my attempt at the LSST's plasticc challenge, where a given data set of the photometry of many different objects are meant to be characterized according to their time dependent flux in various filters, position in the sky, and more into one of 15 possible categories. Further information about the challenge is available here: https://www.kaggle.com/c/PLAsTiCC-2018 . 
 
 
-To save some time to someone interested in this, I achieved a competition score of ~1.3, which is in the top 50% (basically the only positive way to spin that score :)).  
+To save some time to someone interested in this, I achieved a competition score of ~1.26, which is in the top 50% (basically the only positive way to spin that score :)).  
 
 My aim in doing this challenge is to get a taste for what sorts of tasks astronomers face when scaling up their research to the challenges of the LSST (the testing dataset is far larger than the training one!), and dealing with many complicating factors for characterizing transients in LSST images. I've already had my hand in LSST data before, where I attempted to look at an example survey image, and characterize individual objects based on features, in the hopes of distinguishing stars and galaxies. This task mainly revolved around the implementation of unsupervised learning techniques in order to create separate areas in the data with moderate results, where this challenge is far more involved. 
 
