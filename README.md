@@ -1,47 +1,30 @@
 Contained in this repo is my attempt at the LSST's plasticc challenge, where a given data set of the photometry of many different objects are meant to be characterized according to their time dependent flux in various filters, position in the sky, and more into one of 15 possible categories. Further information about the challenge is available here: https://www.kaggle.com/c/PLAsTiCC-2018 . 
 
+
+To save some time to someone interested in this, I achieved a competition score of ~1.3, which is in the top 50% (basically the only positive way to spin that score :)).  
+
 My aim in doing this challenge is to get a taste for what sorts of tasks astronomers face when scaling up their research to the challenges of the LSST (the testing dataset is far larger than the training one!), and dealing with many complicating factors for characterizing transients in LSST images. I've already had my hand in LSST data before, where I attempted to look at an example survey image, and characterize individual objects based on features, in the hopes of distinguishing stars and galaxies. This task mainly revolved around the implementation of unsupervised learning techniques in order to create separate areas in the data with moderate results, where this challenge is far more involved. 
 
 Current work is housed in the "workspace" section, while the current data being worked on is in the aptly named "data" folder. 
 
 
-More updates to come!
 
+Approach
+--------
 
-Brainstormed approach:
+While there are dozens if not hundreds of different potential ways to create a classifier and what features to use, I ended up following along from a popular kernel on the site (https://www.kaggle.com/meaninglesslives/simple-neural-net-for-time-series-classification). 
 
-The current structure of the datasets has a metadata section, which provides the position, distance, and redshift of the various sources. The other section contains the flux in each of the filters for the same objects, liked by the "object_id" column. 
-
-
-My first hypothesis to create a baseline of sorts, is to test a simple model based on the location and distances of these objects, and see if this provides any sort of preliminary information about the nature of the object. While definitely not the best approach, one such merit to this is that I recognize quasars and active galaxies, objects who can potentially flare up and create transient events, will be typically located further away. Perhaps this indicator will provide a purpose in a first runthrough of the data. 
+However, I diverged from this model by using different features. Rather than summarize all passband features into one, I consider each passband individually, and calculate the population statistics for these separately. These population characteristics are then used as features, and include things such as mean, variance, skew, diff2, diff/mean, and so on. Further description of all these are located in the notebook used. 
 
 
 
-Current proposed plan:
+Fair Warning
+------------
 
-Separate into important categories:
-WFD vs DDS(?)
+The test data is far larger than I can handle on my laptop, as it is a 19GB spreadsheet. As a result I did this testing stuff on the server hosted by kaggle. Regardless, the notebook here is the same one as the one used there. 
 
-Extra galactic vs galactic 
+The plots generated are the ones used on the training of the model on the training data, which only includes 14 possible classes, while the testing data is injected with a 15th source. 
 
-
-Once in one of these particular categories, do this: 
-
-Consider total spread of events, is there a huge disparity? If so, what is baseline accuracy? 
+The method by which I determined the probability of the last class (exclusive to testing data) is that it is the probability of that the object being predicted is "not" one of the other ones. The model uses the "predict_proba" action which outputs a probability between 0 and 1, and the probability of it not belonging to the already predicted class will be 1- that #. The 15th class will be the product of all these uncertainties. 
 
 
-Next, create separate datasets for each:
-
-Arrange the fluxes and identify filter correlations, deal with only one filter maybe at first?
-
-Use the TS of that event and it's assigned label to create a RNN or word2vec type of algorithm. 
-
-
-As for figuring out what this 15th sort of event is, use k means? Use PCA first? 
-
-
-Update/Warning
----------------
-
-CANNOT ITERATE THROUGH EACH ROW OF THE DATA!! This takes up too much memory and crashed my computer :) 
-As a result, I'm moving this project onto an external drive. 
